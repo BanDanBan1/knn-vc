@@ -99,7 +99,7 @@ class KNeighborsVC(nn.Module):
             sr = self.sr
             if x.dim() == 1: x = x[None]
         if not sr == self.sr :
-            print "resample {sr} to {self.sr} in {path}"
+            print(f"resample {sr} to {self.sr} in {path}")
             x = torchaudio.functional.resample(x, orig_freq=sr, new_freq=self.sr)
             sr = self.sr
         
