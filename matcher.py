@@ -68,6 +68,8 @@ class KNeighborsVC(nn.Module):
         Optionally specify custom WavLM feature weighting with `weights`.
         """
         feats = []
+        if type(wavs) in [str, Path]:
+            wavs = [wavs,]
         for p in wavs:
             feats.append(self.get_features(p, weights=self.weighting if weights is None else weights, vad_trigger_level=vad_trigger_level))
         
@@ -96,7 +98,10 @@ class KNeighborsVC(nn.Module):
             x: Tensor = path
             sr = self.sr
             if x.dim() == 1: x = x[None]
-        assert sr == self.sr, f"input audio sample rate must be 16kHz. Got {sr}"
+        if ! sr == self.sr :
+            print "resample {sr} to {self.sr} in {path}"
+            x = torchaudio.functional.resample(x, orig_freq=sr, new_freq=self.sr)
+            sr = self.sr
         
         # trim silence from front and back
         if vad_trigger_level > 1e-3:
