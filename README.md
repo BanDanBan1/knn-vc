@@ -5,9 +5,9 @@ The official code repo! This repo contains training and inference code for kNN-V
 Links:
 
 - Arxiv paper: [https://arxiv.org/abs/2305.18975](https://arxiv.org/abs/2305.18975)
-- Colab quickstart: <a target="_blank" href="https://colab.research.google.com/github/bshall/knn-vc/blob/master/knnvc_demo.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+- Colab quickstart: <a target="_blank" href="https://colab.research.google.com/github/BanDanBan1/knn-vc/blob/master/knnvc_demo.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 - Interspeech proceedings: proceedings published in August 2023
-- Demo page with samples: [https://bshall.github.io/knn-vc/](https://bshall.github.io/knn-vc/)
+- Demo page with samples: [https://BanDanBan1.github.io/knn-vc/](https://BanDanBan1.github.io/knn-vc/)
 
 
 ![kNN-VC method](./knn-vc.png)
@@ -32,7 +32,7 @@ We use `torch.hub` to make loading the model easy -- no cloning of the repo need
 ```python
 import torch, torchaudio
 
-knn_vc = torch.hub.load('bshall/knn-vc', 'knn_vc', prematched=True, trust_repo=True, pretrained=True)
+knn_vc = torch.hub.load('BanDanBan1/knn-vc', 'knn_vc', prematched=True, trust_repo=True, pretrained=True)
 # Or, if you would like the vocoder trained not using prematched data, set prematched=False.
 ```
 3. **Compute features** for input and reference audio:
