@@ -102,9 +102,7 @@ class KNeighborsVC(nn.Module):
         num_channels, _ = x.shape
         if 1 < num_channels :
             print(f"keep just first of {num_channels} channels as MONO in {path}")
-            print (x.shape,x)
             x = torch.mean(x, dim=0, keepdim=True)
-            print (x.shape,x)
                         
         if not sr == self.sr :
             print(f"resample {sr} to {self.sr} in {path}")
