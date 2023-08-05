@@ -102,9 +102,9 @@ class KNeighborsVC(nn.Module):
         num_channels, _ = x.shape
         if 1 < num_channels :
             print(f"keep just first of {num_channels} channels as MONO in {path}")
-            print (x)
-            x = [ x[1]]
-            print (x)
+            print ( x.shape, x)
+            x = torch.mean(waveform, dim=0, keepdim=True)
+            print ( x.shape, x)
             
             # x = torchaudio.transforms.DownmixMono (x)
             
