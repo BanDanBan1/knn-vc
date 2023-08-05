@@ -98,6 +98,13 @@ class KNeighborsVC(nn.Module):
             x: Tensor = path
             sr = self.sr
             if x.dim() == 1: x = x[None]
+        
+        num_channels, _ = x.shape
+        if 1 < num_channels :
+            print(f"DownmixMono of {num_channels} as MONO in {path}")
+            ## would be best to replace DownmixMono() by just the first channel out of {num_channels} as MONO
+            x = torchaudio.transforms.DownmixMono (x)
+            
         if not sr == self.sr :
             print(f"resample {sr} to {self.sr} in {path}")
             x = torchaudio.functional.resample(x, orig_freq=sr, new_freq=self.sr)
