@@ -101,8 +101,9 @@ class KNeighborsVC(nn.Module):
         
         num_channels, _ = x.shape
         if 1 < num_channels :
-            print(f"DownmixMono of {num_channels} as MONO in {path}")
+            print(f"DownmixMono of {num_channels} channels as MONO in {path}")
             ## would be best to replace DownmixMono() by just the first channel out of {num_channels} as MONO
+            print (x)
             x = torchaudio.transforms.DownmixMono (x)
             
         if not sr == self.sr :
